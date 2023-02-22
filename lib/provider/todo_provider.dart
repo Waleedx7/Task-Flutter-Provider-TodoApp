@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/models/todo.dart';
 
+// THIS IS JUST FOR .git
 class TodoProvider extends ChangeNotifier {
   List<Todo> todo = [
     Todo(id: 1, title: "title"),
