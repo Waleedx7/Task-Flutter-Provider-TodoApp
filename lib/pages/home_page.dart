@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:todo_app/models/todo.dart';
+import 'package:todo_app/provider/todo_provider.dart';
 import 'package:todo_app/widgets/todo_tile.dart';
 
 class HomePage extends StatelessWidget {
@@ -22,10 +24,13 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-          child: TodoTile(
-        todo: Todo(id: 1, title: "First ToDo"),
-      )),
+      body: ListView.builder(
+        itemCount: context.watch<TodoProvider>().todo.length,
+        itemBuilder: (context, index) => SingleChildScrollView(
+            child: TodoTile(
+          todo: context.watch<TodoProvider>().todo[index],
+        )),
+      ),
     );
   }
 }
